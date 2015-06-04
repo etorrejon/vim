@@ -3,6 +3,10 @@ execute pathogen#infect()
 " enable highlighting
 syntax on
 
+" color scheme: https://github.com/junegunn/seoul256.vim
+colo seoul256
+set background=dark
+
 " turn on filetype plugins
 filetype plugin indent on
 
@@ -32,5 +36,10 @@ set shiftwidth=4
 set tabstop=4
 
 " NERDTree
-let NERDTreeShowHidden = 1
-let g:NERDTreeWinSize = 40
+let NERDTreeShowHidden=1
+let g:NERDTreeWinSize=40
+
+if has("gui_running")
+    " maximize the window
+    set lines=999 columns=999
+endif
