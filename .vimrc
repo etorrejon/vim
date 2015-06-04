@@ -1,35 +1,36 @@
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+execute pathogen#infect()
 
-" support for Solarized: 
-" https://github.com/altercation/vim-colors-solarized
-syntax enable
-if has( 'gui_running' )
-	set background=light
-else
-	set background=dark
-endif
+" enable highlighting
+syntax on
 
-colorscheme solarized
+" turn on filetype plugins
+filetype plugin indent on
 
-" set line numbers
-set number
-
-" tabs: each indentation level is four spaces and tabs are not used (popular with Java programmers)
-set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
-
-set fileencoding
-set encoding=utf-8
-
-set dir=~/tmp
-
-let g:NERDTreeWinSize = 40
-
-" automatically read when a file is changed by an external process
+" automatically reload a file if it's changed externally
 set autoread
 
 " always show current position
 set ruler
 
-" show hidden files in NERDTree
-let NERDTreeShowHidden=1
+" line numbers
+set number
+
+" file encoding
+set fileencoding
+set encoding=utf-8
+
+" disable backups
+set nobackup
+set nowb
+set noswapfile
+
+" spaces instead of tabs
+set expandtab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" NERDTree
+let NERDTreeShowHidden = 1
+let g:NERDTreeWinSize = 40
