@@ -7,6 +7,11 @@ syntax on
 colo seoul256
 set background=dark
 
+if has("gui_running")
+    " maximize the window
+    set lines=999 columns=999
+endif
+
 " turn on filetype plugins
 filetype plugin indent on
 
@@ -16,8 +21,19 @@ set autoread
 " always show current position
 set ruler
 
-" line numbers
+" line numbers on by default
 set number
+
+" relative line numbers
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set norelativenumber
+    else
+        set relativenumber
+    endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
 
 " file encoding
 set fileencoding
@@ -38,8 +54,3 @@ set tabstop=4
 " NERDTree
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=40
-
-if has("gui_running")
-    " maximize the window
-    set lines=999 columns=999
-endif
