@@ -1,4 +1,4 @@
 # vim
-Vim settings
+Vim rc
 
 Work in progress!
