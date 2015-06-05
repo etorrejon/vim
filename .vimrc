@@ -1,5 +1,8 @@
 execute pathogen#infect()
 
+" leader
+let mapleader=","
+
 " enable highlighting
 syntax on
 
@@ -36,7 +39,7 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
 " file encoding
-set fileencoding
+set fileencoding=utf-8
 set encoding=utf-8
 
 " disable backups
