@@ -13,6 +13,10 @@ set background=dark
 if has("gui_running")
     " maximize the window
     set lines=999 columns=999
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r
+    set guioptions-=R
 endif
 
 " turn on filetype plugins
