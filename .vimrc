@@ -12,12 +12,16 @@ set background=dark
 
 if has("gui_running")
     " maximize the window
-    set lines=999 columns=999
+    set lines=999 columns=9999
     set guioptions-=l
     set guioptions-=L
     set guioptions-=r
     set guioptions-=R
 endif
+
+" toggle full vs. narrow screen
+nnoremap <LEADER>ns :set columns=100<CR>
+nnoremap <LEADER>fs :set columns=9999<CR>
 
 " turn on filetype plugins
 filetype plugin indent on
