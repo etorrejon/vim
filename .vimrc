@@ -6,54 +6,51 @@ let mapleader=","
 " enable highlighting
 syntax on
 
-" color scheme: https://github.com/junegunn/seoul256.vim
-colo seoul256
-set background=dark
 
 if has("gui_running")
+    " color scheme: https://github.com/junegunn/seoul256.vim
+    colo seoul256
+    set background=dark
+
     " maximize the window
-    set lines=999 columns=9999
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=R
+    set lines=999 columns=145
+
+    " automatically reload a file if it's changed externally
+    set autoread
+
+    " always show current position
+    set ruler
+
+    " line numbers on by default
+    set number
+
+    " relative line numbers
+    function! NumberToggle()
+        if(&relativenumber == 1)
+            set norelativenumber
+        else
+            set relativenumber
+        endif
+    endfunc
+
+    nnoremap <C-n> :call NumberToggle()<cr>
+
+    " turn on filetype plugins
+    filetype plugin indent on
+
+    " disable backups
+    set nobackup
+    set nowb
+    set noswapfile
+
+    " NERDTree
+    let NERDTreeShowHidden=1
+    let g:NERDTreeWinSize=40
 endif
-
-" toggle full vs. narrow screen
-nnoremap <LEADER>ns :set columns=100<CR>
-nnoremap <LEADER>fs :set columns=9999<CR>
-
-" turn on filetype plugins
-filetype plugin indent on
-
-" automatically reload a file if it's changed externally
-set autoread
-
-" always show current position
-set ruler
-
-" line numbers on by default
-set number
-
-" relative line numbers
-function! NumberToggle()
-    if(&relativenumber == 1)
-        set norelativenumber
-    else
-        set relativenumber
-    endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
 
 " file encoding
 set fileencoding=utf-8
 set encoding=utf-8
-
-" disable backups
-set nobackup
-set nowb
-set noswapfile
 
 " spaces instead of tabs
 set expandtab
@@ -62,6 +59,20 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
-" NERDTree
-let NERDTreeShowHidden=1
-let g:NERDTreeWinSize=40
+" silver searcher
+if executable('ag')
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap \ :Ag<SPACE>
+
+" folding is based on indent level
+set foldmethod=indent
+set foldlevelstart=20
