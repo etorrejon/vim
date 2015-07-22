@@ -64,7 +64,7 @@ if has("gui_running")
     set foldmethod=indent
     set foldlevelstart=20
 
-    " syntastic: used in combination with jscs and jsxhint (install via npm -g)
+    " syntastic: used in combination with jscs (npm install jscs -g)
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
