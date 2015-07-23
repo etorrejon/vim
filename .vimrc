@@ -6,6 +6,7 @@ let mapleader=","
 " enable highlighting
 syntax on
 
+
 if has("gui_running")
     " color scheme: https://github.com/junegunn/seoul256.vim
     colo seoul256
@@ -13,6 +14,12 @@ if has("gui_running")
 
     " maximize the window
     set lines=999 columns=145
+
+    " remove scrollbars
+    set guioptions-=r
+    set guioptions-=l
+    set guioptions-=R
+    set guioptions-=L
 
     " automatically reload a file if it's changed externally
     set autoread
@@ -64,7 +71,7 @@ if has("gui_running")
     set foldmethod=indent
     set foldlevelstart=20
 
-    " syntastic: used in combination with jscs (npm install jscs -g)
+    " syntastic: used in combination with jscs and jsxhint (install via npm -g)
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
