@@ -10,17 +10,35 @@ execute pathogen#infect()
     set encoding=utf-8
 " }
 
-" tabs and fonts {
+" tabs {
     set shiftwidth=4
     set tabstop=4
     set expandtab
 " }
 
-if has("gui_running")
+" line numbers {
+    set number
 
-    " color scheme: https://github.com/junegunn/seoul256.vim {
-        colo seoul256
-        set background=dark
+    function! NumberToggle()
+        if(&relativenumber == 1)
+            set norelativenumber
+        else
+            set relativenumber
+        endif
+    endfunc
+
+    nnoremap <C-n> :call NumberToggle()<cr>
+" }
+
+" highlight search matches {
+    set hlsearch
+" }
+
+if has("gui_running")
+    " color scheme: https://github.com/altercation/vim-colors-solarized {
+        syntax enable
+        colorscheme solarized 
+        set background=light
     " }
 
     " window options {
@@ -30,25 +48,13 @@ if has("gui_running")
         set guioptions-=R
         set guioptions-=L
         set ruler
+        set guifont=Hack
     " }
 
     " automatically reload a file if it's changed externally {
         set autoread
     " }
 
-    " line numbers {
-        set number
-
-        function! NumberToggle()
-            if(&relativenumber == 1)
-                set norelativenumber
-            else
-                set relativenumber
-            endif
-        endfunc
-
-        nnoremap <C-n> :call NumberToggle()<cr>
-    " }
 
     " filetypes {
         filetype plugin indent on
