@@ -35,10 +35,9 @@ execute pathogen#infect()
 " }
 
 if has("gui_running")
-    " color scheme: https://github.com/altercation/vim-colors-solarized {
+    " color scheme {
         syntax enable
-        colorscheme solarized 
-        set background=light
+        colorscheme solarized
     " }
 
     " window options {
@@ -48,7 +47,7 @@ if has("gui_running")
         set guioptions-=R
         set guioptions-=L
         set ruler
-        set guifont=Hack
+        set guifont=Hack:h12
     " }
 
     " automatically reload a file if it's changed externally {
@@ -67,8 +66,8 @@ if has("gui_running")
     " }
 
     " NERDTree {
-    let NERDTreeShowHidden=1
-    let g:NERDTreeWinSize=40
+        let NERDTreeShowHidden=1
+        let g:NERDTreeWinSize=36
     " }
 
     " silver searcher {
@@ -93,24 +92,19 @@ if has("gui_running")
         set foldlevelstart=20
     " }
 
-    " syntastic: used in combination with jscs and jsxhint (install via npm -g) {
-        set statusline+=%#warningmsg#
-        set statusline+=%{SyntasticStatuslineFlag()}
-        set statusline+=%*
+    " status line ( vim-airline ) {
+        set laststatus=2
+        let g:airline_powerline_fonts = 1
+        let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#fnamemod = ':t'
+        let g:airline#extensions#syntastic#enabled = 1
+    " }
 
-        let g:syntastic_always_populate_loc_list = 1
-        let g:syntastic_auto_loc_list = 1
-        let g:syntastic_enable_signs = 1
+    " syntastic: used in combination with jscs and jsxhint (install via npm -g) {
         let g:syntastic_check_on_open = 1
         let g:syntastic_check_on_wq = 0
         let g:syntastic_javascript_checkers = ['jscs']
         let g:syntastic_javascript_jscs_config = ~/.jscsrc
-    " }
-
-    " status line ( vim-airline ) {
-        set laststatus=2
-        let g:airline_theme='powerlineish'
-        " let g:airline_powerline_fonts=1
     " }
 
 endif
