@@ -34,11 +34,12 @@ execute pathogen#infect()
     set hlsearch
 " }
 
+" color scheme {
+    syntax enable
+    colorscheme seoul256 
+" }
+
 if has("gui_running")
-    " color scheme {
-        syntax enable
-        colorscheme solarized
-    " }
 
     " window options {
         set lines=999 columns=145
@@ -94,6 +95,7 @@ if has("gui_running")
 
     " status line ( vim-airline ) {
         set laststatus=2
+        let g:airline_theme='zenburn'
         let g:airline_powerline_fonts = 1
         let g:airline#extensions#tabline#enabled = 1
         let g:airline#extensions#tabline#fnamemod = ':t'
