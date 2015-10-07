@@ -34,12 +34,12 @@ execute pathogen#infect()
     set hlsearch
 " }
 
-" color scheme {
-    syntax enable
-    colorscheme seoul256 
-" }
-
 if has("gui_running")
+
+    " color scheme {
+        syntax enable
+        colorscheme seoul256 
+    " }
 
     " window options {
         set lines=999 columns=145
