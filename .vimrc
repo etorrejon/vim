@@ -1,7 +1,7 @@
 execute pathogen#infect()
 
 " leader {
-    let mapleader=","
+    let mapleader="\<Space>"
 " }
 
 
@@ -16,25 +16,29 @@ execute pathogen#infect()
     set expandtab
 " }
 
-" line numbers {
-    set number
-
-    function! NumberToggle()
-        if(&relativenumber == 1)
-            set norelativenumber
-        else
-            set relativenumber
-        endif
-    endfunc
-
-    nnoremap <C-n> :call NumberToggle()<cr>
-" }
-
-" highlight search matches {
-    set hlsearch
-" }
-
 if has("gui_running")
+
+    " Find merge conflict markers {
+        map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR> 
+    " }
+
+    " line numbers {
+        set number
+
+        function! NumberToggle()
+            if(&relativenumber == 1)
+                set norelativenumber
+            else
+                set relativenumber
+            endif
+        endfunc
+
+        nnoremap <C-n> :call NumberToggle()<cr>
+    " }
+
+    " highlight search matches {
+        set hlsearch
+    " }
 
     " color scheme {
         syntax enable
